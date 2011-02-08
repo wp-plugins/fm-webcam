@@ -21,5 +21,5 @@ Shows WebCam picture in Sidebar with JavaScript refresh.
 
 == Changelog ==
 
-= 0.9 =
+= 1.0 =
 * Plugin new released
