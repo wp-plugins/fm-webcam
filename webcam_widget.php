@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: FM-WebCam Widget
- * Version: 1.0
+ * Version: 1.01
  * Plugin URI: http://www.frozen-media.de
  * Description: Show Webcam in Sidebar
  * Author: Thomas Ziegler, Frozen-Media
