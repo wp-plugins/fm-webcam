@@ -1,7 +1,7 @@
 === FM-WebCam ===
 Contributors: Frozen-Media
 Donate link: http://www.frozen-media.de
-Tags: webcam
+Tags: webcam, widget
 Requires at least: 2.8
 Tested up to: 3.1
 Stable tag: 4.3
