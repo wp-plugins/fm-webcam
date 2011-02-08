@@ -50,7 +50,7 @@ class FM_WebCam_Widget extends WP_Widget
       $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title']);
       $imageurl = empty($instance['imageurl']) ? 'http://www.opentopia.com/images/data/cams/14312/medium.jpg' : $instance['imageurl'];
       $interval = empty($instance['interval']) ? '30' : $instance['interval'];
-      $picwidth = empty($instance['picwidth']) ? '200' : $instance['picwidth'];
+      $picwidth = empty($instance['picwidth']) ? '0' : $instance['picwidth'];
       $intervalMS = $interval * 1000; // Convert to ms
 
 
