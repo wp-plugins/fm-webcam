@@ -26,3 +26,6 @@ Shows WebCam picture in Sidebar with JavaScript refresh.
 
 = 1.01 =
 * Bugfixing
+
+= 1.02 =
+* DemoURL fixed

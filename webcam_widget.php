@@ -48,9 +48,9 @@ class FM_WebCam_Widget extends WP_Widget
       
       extract($args);
       $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title']);
-      $imageurl = empty($instance['imageurl']) ? 'http://new.frozen-radio.de/tools/minipic.php?pic=studio01&size=200' : $instance['imageurl'];
+      $imageurl = empty($instance['imageurl']) ? 'http://www.opentopia.com/images/data/cams/14312/medium.jpg' : $instance['imageurl'];
       $interval = empty($instance['interval']) ? '30' : $instance['interval'];
-      $picwidth = empty($instance['picwidth']) ? '0' : $instance['picwidth'];
+      $picwidth = empty($instance['picwidth']) ? '200' : $instance['picwidth'];
       $intervalMS = $interval * 1000; // Convert to ms
 
 
@@ -96,7 +96,7 @@ class FM_WebCam_Widget extends WP_Widget
     */
     function form($instance){
       //Defaults
-      $instance = wp_parse_args( (array) $instance, array('title'=>'', 'imageurl'=>'http://new.frozen-radio.de/tools/minipic.php?pic=studio01&size=200', 'interval'=>'30') );
+      $instance = wp_parse_args( (array) $instance, array('title'=>'', 'imageurl'=>'http://www.opentopia.com/images/data/cams/14312/medium.jpg', 'interval'=>'30', 'picwidth'=>'200') );
 
       $title = htmlspecialchars($instance['title']);
       $imageurl = htmlspecialchars($instance['imageurl']);
