@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== FM-WebCam ===
 Contributors: Frozen-Media
 Donate link: http://www.frozen-media.de
 Tags: webcam
