@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: FM-WebCam Widget
- * Version: 1.02
+ * Version: 1.1
  * Plugin URI: http://www.frozen-media.de
  * Description: Show Webcam in Sidebar
  * Author: Thomas Ziegler, Frozen-Media
@@ -48,9 +48,10 @@ class FM_WebCam_Widget extends WP_Widget
       
       extract($args);
       $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title']);
-      $imageurl = empty($instance['imageurl']) ? 'http://www.opentopia.com/images/data/cams/14312/medium.jpg' : $instance['imageurl'];
+      $imageurl = empty($instance['imageurl']) ? 'http://new.frozen-radio.de/tools/minipic.php?pic=studio01&size=200' : $instance['imageurl'];
       $interval = empty($instance['interval']) ? '30' : $instance['interval'];
       $picwidth = empty($instance['picwidth']) ? '0' : $instance['picwidth'];
+      $piclink = empty($instance['piclink']) ? 'http://www.frozen-radio.de' : $instance['piclink'];
       $intervalMS = $interval * 1000; // Convert to ms
 
 
@@ -61,7 +62,11 @@ class FM_WebCam_Widget extends WP_Widget
       if ( $title ) echo $before_title . $title . $after_title;
 
       $widgetID = str_replace("-","_",$this->id);
-      echo '<img name="'.$widgetID.'" src="'.$imageurl.'" alt="" />'."\n";
+      if ( $piclink <> "" ) {
+          echo '<a href="'.$piclink.'"><img name="'.$widgetID.'" src="'.$imageurl.'" alt="" /></a>'."\n";
+      } else {
+          echo '<img name="'.$widgetID.'" src="'.$imageurl.'" alt="" />'."\n";
+      }
       echo '<script type="text/javascript"><!--'."\n";
       echo 'function reloadImage_'.$widgetID.'() {'."\n";
       echo 'var now = new Date();'."\n";
@@ -86,6 +91,8 @@ class FM_WebCam_Widget extends WP_Widget
       $instance['imageurl'] = strip_tags(stripslashes($new_instance['imageurl']));
       $instance['interval'] = strip_tags(stripslashes($new_instance['interval']));
       $instance['picwidth'] = strip_tags(stripslashes($new_instance['picwidth']));
+      $instance['piclink'] = strip_tags(stripslashes($new_instance['piclink']));
+      
 
     return $instance;
   }
@@ -96,17 +103,20 @@ class FM_WebCam_Widget extends WP_Widget
     */
     function form($instance){
       //Defaults
-      $instance = wp_parse_args( (array) $instance, array('title'=>'', 'imageurl'=>'http://www.opentopia.com/images/data/cams/14312/medium.jpg', 'interval'=>'30', 'picwidth'=>'200') );
+      $instance = wp_parse_args( (array) $instance, array('title'=>'', 'imageurl'=>'http://new.frozen-radio.de/tools/minipic.php?pic=studio01&size=200', 'interval'=>'30') );
 
       $title = htmlspecialchars($instance['title']);
       $imageurl = htmlspecialchars($instance['imageurl']);
       $interval = htmlspecialchars($instance['interval']);
       $picwidth = htmlspecialchars($instance['picwidth']);
+      $piclink = htmlspecialchars($instance['piclink']);
 
       # Output the options
       echo '<p style="text-align:left;"><label for="' . $this->get_field_name('title') . '">' . __('Title:') . ' <input style="width: 250px;" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . $title . '" /></label></p>';
 
       echo '<p style="text-align:left;"><label for="' . $this->get_field_name('imageurl') . '">' . __('ImageURL:') . ' <input style="width: 200px;" id="' . $this->get_field_id('imageurl') . '" name="' . $this->get_field_name('imageurl') . '" type="text" value="' . $imageurl . '" /></label></p>';
+      
+      echo '<p style="text-align:left;"><label for="' . $this->get_field_name('piclink') . '">' . __('LinkURL:') . ' <input style="width: 200px;" id="' . $this->get_field_id('piclink') . '" name="' . $this->get_field_name('piclink') . '" type="text" value="' . $piclink . '" /></label></p>';
 
       echo '<p style="text-align:left;"><label for="' . $this->get_field_name('picwidth') . '">' . __('Image width(px):') . ' <input style="width: 50px;" id="' . $this->get_field_id('picwidth') . '" name="' . $this->get_field_name('picwidth') . '" type="text" value="' . $picwidth . '" /> (0=disable)</label></p>';
 

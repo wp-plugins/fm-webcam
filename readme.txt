@@ -29,3 +29,5 @@ Shows WebCam picture in Sidebar with JavaScript refresh.
 
 = 1.02 =
 * DemoURL fixed
+= 1.1 =
+* Link to picture
